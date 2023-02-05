@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"><!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Poppins font from Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Unbounded:wght@300&display=swap" rel="stylesheet">
+<!--Style sheet-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- Your Custom CSS file that will include your blocks CSS -->
+  <title>Cygnus-Xpo</title>
+</head>
+
+<body>
+  <!-- Put the blocks HTML here -->
+  <!------------------------------>
+  <!-- HERO ---------------->
+  <!------------------------------>
+  <header class="hero container-fluid">
+    <div class="hero__content container mx-auto">
+      <!-- I'm putting the nav inside this "fixed-nav-container" to fix some issues happens on scroll -->
+      <div class="fixed-nav-container">
+        <nav class="hero-nav position-relative container mx-auto px-0">
+          <ul class="nav w-100 list-unstyled align-items-center p-0">
+            <li class="hero-nav__item">
+              <!--company logo-->
+              <a href="/"><img class="hero-nav__logo" src="CygnusLogoBlack.png" change-src-onscroll="CygnusLogoBlack.png" alt="our logo"></a>
+              <!-- Don't remove this empty span -->
+              <span class="mx-2"></span>
+            </li>
+            <li id="hero-menu" class="flex-grow-1 hero__nav-list hero__nav-list--mobile-menu ft-menu">
+              <ul class="hero__menu-content nav flex-column flex-lg-row ft-menu__slider animated list-unstyled p-2 p-lg-0">
+              </ul><button close-nav-menu="" class="ft-menu__close-btn animated"><svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path>
+                  <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path>
+                </svg></button>
+            </li>
+            <li class="hero-nav__item d-lg-none d-flex flex-row-reverse">
+              <button open-nav-menu="" class="text-center px-2"><i class="fas fa-bars"></i></button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="hero__body">
+        <div class="row px-0 mx-0">
+          <div class="col-lg-6 px-0 mx-0">
+            <h1 class="hero__title mb-4">Cygnus-Xpo</h1>
+            <p class="hero__paragraph mb-5">Export goods that the market needs.</p>
+            <div class="hero__btns-container">
+              <a class="hero__btn btn btn-primary mb-2 mb-lg-0 mx-1 mx-lg-2" href="#!">Contact Now</a>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 mt-lg-0">
+            <div class="hero__img-container"><img class="hero__img w-100" src="imageSmple.jpg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <script src="https://unpkg.com/tua-body-scroll-lock"></script>
+  <script>
+    var showDropdown = function(e) {
+        e.currentTarget.classList.add("hero-nav__item--show-dropdown")
+      },
+      hideDropdown = function(e) {
+        e.currentTarget.classList.remove("hero-nav__item--show-dropdown")
+      },
+      toggleDropdown = function(e) {
+        e.currentTarget.classList.toggle("hero-nav__item--show-dropdown")
+      };
+
+    function setupDropdowns(n) {
+      document.querySelectorAll(".hero-nav__item--with-dropdown").forEach(function(e) {
+        var o, t;
+        n.matches ? ((o = e.classList).contains("hero-nav__item--dropdown-left") && o.contains("hero-nav__item--dropdown-right") || (t = e.getBoundingClientRect().width, e.querySelector(".dropdown").style.transform = "translateX(calc(-50% + " + t / 2 + "px))"), e.addEventListener("mouseenter", showDropdown), e.addEventListener("mouseleave", hideDropdown), e.querySelector(".hero-nav__link").removeEventListener("click", toggleDropdown)) : (e.removeEventListener("mouseenter", showDropdown), e.removeEventListener("mouseleave", hideDropdown), e.querySelector(".dropdown").style.transform = "", e.addEventListener("click", toggleDropdown))
+      })
+    }
+    var mediaQuery = window.matchMedia("(min-width: 992px)");
+    setupDropdowns(mediaQuery), mediaQuery.addListener(function(e) {
+      var o;
+      setupDropdowns(e), e.matches && ((o = document.querySelector("#hero-menu")).style.height = "", bodyScrollLock.unlock(o))
+    });
+    var heroMenu = document.querySelector("#hero-menu");
+
+    function closeMenuAndGoTo(o) {
+      document.querySelector("#hero-menu").classList.toggle("ft-menu--js-show");
+      var e = document.querySelector("#hero-menu");
+      if (e.style.height = "", bodyScrollLock.unlock(e), "#" === o || !document.querySelector(o)) return !1;
+      setTimeout(function() {
+        var e = document.querySelector(o);
+        window.scrollTo({
+          top: e.getBoundingClientRect().top,
+          behavior: "smooth"
+        })
+      }, 250)
+    }
+    document.querySelector("[close-nav-menu]").onclick = function(e) {
+      heroMenu.classList.toggle("ft-menu--js-show"), bodyScrollLock.unlock(heroMenu)
+    }, document.querySelector("[open-nav-menu]").onclick = function(e) {
+      heroMenu.classList.toggle("ft-menu--js-show"), heroMenu.style.height = window.innerHeight + "px", bodyScrollLock.lock(heroMenu)
+    }, document.querySelector("#hero-menu").querySelectorAll("[href*='#']").forEach(function(o) {
+      o.onclick = function(e) {
+        e.preventDefault(), closeMenuAndGoTo(o.getAttribute("href"))
+      }
+    });
+    var nav = document.querySelector(".hero-nav");
+    window.onscroll = function(e) {
+      var o = document.querySelector("[change-src-onscroll]");
+      window.scrollY > nav.getBoundingClientRect().height ? (nav.classList.contains("hero-nav--is-sticky") || (window.logoSrc = o.getAttribute("src"), o.setAttribute("src", o.getAttribute("change-src-onscroll")), o.setAttribute("change-src-onscroll", logoSrc)), nav.classList.add("hero-nav--is-sticky")) : 0 === window.scrollY && (nav.classList.contains("hero-nav--is-sticky") && (window.logoSrc = o.getAttribute("src"), o.setAttribute("src", o.getAttribute("change-src-onscroll")), o.setAttribute("change-src-onscroll", logoSrc)), nav.classList.remove("hero-nav--is-sticky"))
+    };
+    var languageDropdown = document.querySelector("[javascript-language-selector]");
+    languageDropdown.onclick = function(e) {
+      e.target.classList.contains("dropdown__link") && (languageDropdown.querySelector(".dropdown__link--selected").classList.remove("dropdown__link--selected"), e.target.classList.add("dropdown__link--selected"), document.querySelector(".language-image").setAttribute("src", e.target.querySelector("img").getAttribute("src")))
+    }
+  </script>
+  <!------------------------------>
+  <!-- RIGHT FEATURE ---------------->
+  <!------------------------------>
+  <div class="block-8-scr space-between-blocks" style="background: #e1e3e5">
+    <div class="container position-relative">
+      <div class="row px-2 align-items-center flex-column-reverse flex-lg-row">
+        <!-- CONTENT -->
+        <div class="col-lg-6 position-relative mt-4 mt-lg-0">
+          <h1 class="block__title mb-3">What Do We do?</h1>
+          <p class="block__paragraph block__paragraph--big mb-5">We use the most advanced protocol, WireGuard, to encrypt your network activity and hide your IP address.</p>
+        </div>
+        <!-- IMAGE -->
+        <div class="col-lg-6 my-5 my-lg-0 p-lg-5 text-center">
+          <div class="block-8-scr__img-container position-relative"><img class="block-8-scr__img" src="store.jpg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------------------------------>
+  <!-- LEFT FEATURE ---------------->
+  <!------------------------------>
+  <div class="block-8-scr space-between-blocks">
+    <div class="container position-relative">
+      <div class="row px-2 align-items-center flex-column-reverse flex-lg-row">
+        <!-- IMAGE -->
+        <div class="col-lg-6 my-5 my-lg-0 p-lg-5 text-center">
+          <div class="block-8-scr__img-container position-relative"><img class="block-8-scr__img" src="deal.jpg"></div>
+        </div><!-- CONTENT -->
+        <div class="col-lg-6 position-relative mt-4 mt-lg-0">
+          <h1 class="block__title mb-3">Authentic Goods</h1>
+          <p class="block__paragraph block__paragraph--big mb-0">Surf, stream, game, and get work done with fast network speed using our WireGuard powered servers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------------------------------>
+  <!-- RIGHT FEATUR ---------------->
+  <!------------------------------>
+  <div class="block-8-scr space-between-blocks" style="background: #edecef">
+    <div class="container position-relative">
+      <div class="row px-2 align-items-center flex-column-reverse flex-lg-row">
+        <!-- CONTENT -->
+        <div class="col-lg-6 position-relative mt-4 mt-lg-0">
+          <h1 class="block__title mb-3">Accurate Paperwork</h1>
+          <p class="block__paragraph block__paragraph--big mb-5">We don't store your online activity logs on our servers. Nothing you enter on web pages will be saved.</p>
+        </div>
+        <!-- IMAGE -->
+        <div class="col-lg-6 my-5 my-lg-0 p-lg-5 text-center">
+          <div class="block-8-scr__img-container position-relative"><img class="block-8-scr__img" src="doc.jpg"></div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!------------------------------>
+  <!-- FAQ ---------------->
+  <!------------------------------>
+  <div class="block-39 space-between-blocks">
+    <div class="container">
+      <!-- HEADER -->
+      <div class="block__header col-lg-8 col-xl-7 mx-auto text-center mb-5">
+        <h1 class="block__title">Frequently Asked Questions</h1>
+      </div>
+      <div class="row px-2">
+        <div class="col-lg-6">
+          <div class="content-block">
+            <h4 class="content-block__title">Where is my data stored?</h4>
+            <p class="content-block__paragraph">Your account and organization related data is currently stored in Nürnberg, Falkenstein, Frankfurt (Germany) and Helsinki (Finland) under European privacy law. For "Expert" users payment information are processed by Stripe, Inc. in the United States.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="content-block">
+            <h4 class="content-block__title">What does "Fair Pricing" mean?</h4>
+            <p class="content-block__paragraph">Organizations on the "Expert" plan are billed per active user, meaning those who log in at least once in a 30-day period. You receive a credit for inactive users, which will be applied to new or existing users in the next billing cycle.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="content-block">
+            <h4 class="content-block__title">What are the payment options?</h4>
+            <p class="content-block__paragraph">We currently accept all major credit cards (e.g. Visa, MasterCard, American Express). Depending on your country you may also use services like AliPay, Giropay, iDEAL, SEPA or SOFORT.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="content-block">
+            <h4 class="content-block__title">What personal information do you ask for?</h4>
+            <p class="content-block__paragraph">During registration we ask for your email address, full name and an account password. No additional information is required to sign up.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------------------------------>
+  <!-- CTA ---------------->
+  <!------------------------------>
+  <div class="block-32 space-between-blocks">
+    <div class="container">
+      <div class="col-lg-8 col-xl-7 mx-auto text-center mb-4">
+        <h1 class="block__title">It is the best for you and your privacy. Start for Free today.</h1>
+      </div>
+      <div class="text-center mt-1"><a href="#!" class="btn btn-primary">Partner With Us</a></div>
+    </div>
+  </div>
+  <script>
+    function submitForm(t) {
+      t.preventDefault();
+      var n = t.target.querySelector("button");
+      if (n.classList.contains("btn--loading")) return !1;
+      n.classList.add("btn--loading");
+      try {
+        setTimeout(function() {
+          n.classList.remove("btn--loading")
+        }, 2e3)
+      } catch (t) {
+        console.log(t), n.classList.remove("btn--loading")
+      }
+    }
+  </script>
+  <!------------------------------>
+  <!-- FOOTER ---------------->
+  <!------------------------------>
+  <div class="block-44 py-5">
+    <div class="container">
+      <div class="row px-0 mx-0 justify-content-center align-items-center">
+        <div class="block-44__logo-container">
+          <img class="block-44__logo" src="CygnusLogoWhite.png">
+        </div>
+      </div>
+    </div>
+    <hr class="block-44__divider">
+    <div class="container">
+      <div class="row flex-column flex-md-row px-2 justify-content-center">
+        <div class="flex-grow-1">
+          <ul class="block-44__extra-links d-flex list-unstyled p-0">
+            <li class="mx-2"><a href="https://twitter.com/CygnusXpo" class="block-44__link m-0"><i class="fab fa-twitter"></i></a></li>
+            <li class="mx-2"><a href="https://www.instagram.com/cygnusxp0" class="block-44__link m-0"><i class="fab fa-instagram"></i></a></li>
+            <li class="mx-2"><a href="mailto:cygnusxpo@example.com" class="block-44__link m-0"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+        <p class="block-44__copyrights">© 2023 Cygnus Xpo. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div><!-- Put the blocks HTML here -->
+</body>
+
+</html>
